@@ -1,9 +1,13 @@
 import styled from 'styled-components'
 
 export const TaskCreationFieldDiv = styled.div`
-  width: 70%;
-  display: flex;
+  width: 90%;
   align-self: center;
   margin-top: 10px;
-  justify-content: space-evenly;
+  display: flex;
+  gap: 10px;
+
+  @media (min-width: 481px) {
+    width: 70%;
+  }
 `

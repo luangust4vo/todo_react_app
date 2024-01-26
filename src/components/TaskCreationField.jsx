@@ -45,8 +45,13 @@ export const TaskCreationField = () => {
           onChange={handleTaskInputChange}
           onKeyDown={(e) => keyEnterPress(e, handleAddTaskButtonClick)}
           value={newTask}
+          placeholder="Insira uma nova tarefa"
         />
-        <AddTaskButton type="submit" onClick={handleAddTaskButtonClick}>
+        <AddTaskButton
+          className="addButton"
+          type="submit"
+          onClick={handleAddTaskButtonClick}
+        >
           <FaPlus />
         </AddTaskButton>
       </TaskCreationFieldDiv>

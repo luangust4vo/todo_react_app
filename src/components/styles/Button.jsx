@@ -17,4 +17,10 @@ export const Button = styled.button`
     background-color: white;
     padding: 14px;
   }
+
+  @media (min-width: 769px) {
+    &.addButton {
+      display: none;
+    }
+  }
 `

@@ -12,6 +12,7 @@ import { keyEnterPress } from '../utils/keyEnterPress'
 
 export const TaskContainer = ({ tasks, setTasks }) => {
   const [editingTask, setEditingTask] = useState('')
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
   const inputRef = useRef(null)
 
   useEffect(() => {
@@ -19,6 +20,19 @@ export const TaskContainer = ({ tasks, setTasks }) => {
       inputRef.current.focus()
     }
   }, [inputRef, tasks])
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 769)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    handleResize()
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   const handleDeleteTaskButtonClick = (taskId) => {
     setTasks(tasks.filter((task) => task.id !== taskId))
@@ -103,7 +117,11 @@ export const TaskContainer = ({ tasks, setTasks }) => {
                 checked={task.isChecked}
                 onChange={() => handleCheckChange(task.id)}
               />
-              <p>{task.description}</p>
+              <p title={task.description}>
+                {isSmallScreen && task.description.length > 20
+                  ? task.description.slice(0, 10) + '...'
+                  : task.description}
+              </p>
               <div>
                 <EditButton onClick={() => handleEditTaskButtonClick(task.id)}>
                   <FaPen />
