@@ -43,13 +43,13 @@ Error generating stack: `+o.message+`
   border: 1px solid #e1dcdc;
   border-radius: 5px;
   font-size: 1em;
-  width: 80%;
+  width: 100%;
 
   &:focus {
     border: 1px solid #426eff;
   }
 
-  @media (min-width: 481px) {
+  @media (min-width: 769px) {
     flex: 1;
   }
 `,Sl=Un.button`
